@@ -1,7 +1,9 @@
+import AddReviewForm from "../components/AddReviewForm";
+
 const AddReview = () => {
   return (
     <div>
-      <h1>Add Review</h1>
+      <AddReviewForm></AddReviewForm>
     </div>
   );
 };
