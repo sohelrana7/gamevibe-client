@@ -141,7 +141,7 @@ const AddReviewForm = () => {
           <div className="mt-6">
             <button
               type="submit"
-              className="btn bg-[#D2B48C] text-[#331A15] font-rancho w-full py-3 text-lg"
+              className="btn bg-[#6e83b7] text-white font-rancho w-full py-3 text-lg"
             >
               Add Review
             </button>
