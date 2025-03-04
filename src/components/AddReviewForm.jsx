@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom"; // If using React Router
 import Swal from "sweetalert2";
 import AuthContext from "../context/AuthContext";
 const AddReviewForm = () => {
   const { user } = useContext(AuthContext);
+  // const [selectedOption, setSelectedOption] = useState("option2");
   const handleAddReview = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -88,6 +89,15 @@ const AddReviewForm = () => {
                 className="input input-bordered w-full"
               />
               <label className="label mt-3">Genres</label>
+              {/* <select
+                value={selectedOption}
+                onChange={(e) => setSelectedOption(e.target.value)}
+                className="border p-2 rounded"
+              >
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+              </select> */}
               <select name="genres" className="select select-bordered w-full">
                 <option value="" disabled selected>
                   Select one

@@ -1,6 +1,6 @@
 import { useContext, useRef, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import SocialLogIn from "../Shared/SocialLogIn";
 import logInData from "../assets/register.json";
@@ -12,7 +12,8 @@ const SignIn = () => {
   const [errorMessage, setErrorMessage] = useState({});
   const emailRef = useRef();
   const navigate = useNavigate();
-
+  const location = useLocation();
+  console.log(location);
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,7 +24,7 @@ const SignIn = () => {
     signInUser(email, password)
       .then((result) => {
         console.log(result.user);
-        navigate("/");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error.message);
