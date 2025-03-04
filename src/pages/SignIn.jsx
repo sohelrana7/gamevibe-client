@@ -3,7 +3,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import SocialLogIn from "../Shared/SocialLogIn";
-import loginImg from "../../src/assets/login.jpg";
+import logInData from "../assets/register.json";
+import Lottie from "lottie-react";
 
 const SignIn = () => {
   const { signInUser, forgetPassword } = useContext(AuthContext);
@@ -46,9 +47,7 @@ const SignIn = () => {
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="lg:px-0 px-4 w-96">
-          <img src={loginImg} alt="" />
-        </div>
+        <Lottie animationData={logInData}></Lottie>
         <form
           onSubmit={handleSignIn}
           className="lg:min-h-screen flex justify-center items-center"

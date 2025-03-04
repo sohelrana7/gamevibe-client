@@ -2,8 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useContext, useState } from "react";
 import AuthContext from "../context/AuthContext";
-import loginImg from "../../src/assets/login.jpg";
+
 import SocialLogIn from "../Shared/SocialLogIn";
+import Lottie from "lottie-react";
+import registerData from "../assets/register.json";
 const Register = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState({});
@@ -88,9 +90,7 @@ const Register = () => {
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left w-96">
-          <div className="lg:px-0 px-4 w-96">
-            <img src={loginImg} alt="" />
-          </div>
+          <Lottie animationData={registerData}></Lottie>
         </div>
         <form
           onSubmit={handleRegister}

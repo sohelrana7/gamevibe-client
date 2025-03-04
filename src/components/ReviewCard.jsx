@@ -48,10 +48,7 @@ const ReviewCard = ({ review }) => {
         <p>Genres: {genres}</p>
         <p>Publish: {date}</p>
         <div className="card-actions justify-end">
-          <Link
-            to={`gameDetails/${_id}`}
-            className="btn bg-[#6e83b7] text-white"
-          >
+          <Link to={`review/${_id}`} className="btn bg-[#6e83b7] text-white">
             Explore Details
           </Link>
         </div>

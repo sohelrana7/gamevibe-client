@@ -8,7 +8,7 @@ import GameWacthList from "../pages/GameWacthList";
 import SignIn from "../pages/SignIn";
 import Register from "../pages/Register";
 import ErrorPage from "../components/ErrorPage";
-import GameDetails from "../pages/GameDetails";
+import ReviewDetails from "../pages/ReviewDetails";
 
 export const router = createBrowserRouter([
   {
@@ -46,8 +46,10 @@ export const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: "/allReviews/gameDetails/:id",
-        element: <GameDetails></GameDetails>,
+        path: "/allReviews/review/:id",
+        element: <ReviewDetails></ReviewDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/reviews/${params.id}`),
       },
     ],
   },
