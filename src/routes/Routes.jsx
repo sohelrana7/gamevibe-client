@@ -35,12 +35,24 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/myReviews",
-        element: <MyReviews></MyReviews>,
+        path: "/myReviews/:email",
+        element: (
+          <PrivateRoute>
+            <MyReviews></MyReviews>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/reviews/${params.email}`),
       },
       {
-        path: "/gameWatchList",
-        element: <GameWacthList></GameWacthList>,
+        path: "/myWatchList/:email",
+        element: (
+          <PrivateRoute>
+            <GameWacthList></GameWacthList>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/watchLists/${params.email}`),
       },
       {
         path: "/signIn",
