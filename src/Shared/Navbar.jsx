@@ -22,7 +22,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/allReviews"
+          to="/reviews"
           className={({ isActive }) =>
             isActive
               ? "text-[#6e83b7] font-bold border-b-2 border-[#6e83b7] pb-1"
@@ -46,7 +46,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to={`/myReviews/${user?.email}`}
+          to={`/myReviews/${user?.email}`} // Use email from user context
           className={({ isActive }) =>
             isActive
               ? "text-[#6e83b7] font-bold border-b-2 border-[#6e83b7] pb-1"

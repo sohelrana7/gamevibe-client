@@ -16,7 +16,7 @@ const GameWacthList = () => {
           </tr>
         </thead>
         <tbody>
-          {loadData.map((item, index) => (
+          {loadData?.map((item, index) => (
             <tr key={item._id}>
               <td>{index + 1}</td>
               <td>{item.title}</td>

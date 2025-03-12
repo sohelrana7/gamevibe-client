@@ -20,11 +20,16 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader: () => fetch("https://game-vibe-server.vercel.app/reviews"),
       },
       {
-        path: "/allReviews",
-        element: <AllReviews></AllReviews>,
-        loader: () => fetch("http://localhost:5000/reviews"),
+        path: "/reviews",
+        element: (
+          <PrivateRoute>
+            <AllReviews></AllReviews>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("https://game-vibe-server.vercel.app/reviews"),
       },
       {
         path: "/addReview",
@@ -38,11 +43,13 @@ export const router = createBrowserRouter([
         path: "/myReviews/:email",
         element: (
           <PrivateRoute>
-            <MyReviews></MyReviews>
+            <MyReviews />
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/reviews/${params.email}`),
+          fetch(
+            `https://game-vibe-server.vercel.app/reviews/email/${params.email}`
+          ), // Ensure correct param
       },
       {
         path: "/myWatchList/:email",
@@ -52,7 +59,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/watchLists/${params.email}`),
+          fetch(
+            `https://game-vibe-server.vercel.app/watchLists/${params.email}`
+          ),
       },
       {
         path: "/signIn",
@@ -63,10 +72,10 @@ export const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: "/allReviews/review/:id",
+        path: "/review/:id",
         element: <ReviewDetails></ReviewDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/reviews/${params.id}`),
+          fetch(`https://game-vibe-server.vercel.app/reviews/id/${params.id}`),
       },
     ],
   },

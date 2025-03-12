@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const ReviewCard = ({ review }) => {
+  console.log(review);
   const { _id, title, genres, rating, date, photo } = review;
   return (
     <div className="card bg-base-100  shadow-sm">
@@ -9,7 +10,7 @@ const ReviewCard = ({ review }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
-        <p>
+        <div>
           <div className="rating mr-2">
             <input
               type="radio"
@@ -44,11 +45,11 @@ const ReviewCard = ({ review }) => {
             />
           </div>
           {rating}
-        </p>
+        </div>
         <p>Genres: {genres}</p>
         <p>Publish: {date}</p>
         <div className="card-actions justify-end">
-          <Link to={`review/${_id}`} className="btn bg-[#6e83b7] text-white">
+          <Link to={`/review/${_id}`} className="btn bg-[#6e83b7] text-white">
             Explore Details
           </Link>
         </div>

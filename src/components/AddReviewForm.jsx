@@ -4,31 +4,40 @@ import Swal from "sweetalert2";
 import AuthContext from "../context/AuthContext";
 const AddReviewForm = () => {
   const { user } = useContext(AuthContext);
-  // const [selectedOption, setSelectedOption] = useState("option2");
+  const [selectedOption, setSelectedOption] = useState("option2");
   const handleAddReview = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
+    const reviewer_name = form.name.value;
+    const reviewer_email = form.email.value;
     const title = form.title.value;
     const rating = form.rating.value;
-    const date = form.publish.value;
+    const publish = form.publish.value;
     const description = form.description.value;
     const genres = form.genres.value;
     const photo = form.photo.value;
-    console.log(name, email, title, rating, date, description, genres, photo);
-    const newReview = {
-      name,
-      email,
+    console.log(
+      reviewer_name,
+      reviewer_email,
       title,
       rating,
-      date,
+      publish,
+      description,
+      genres,
+      photo
+    );
+    const newReview = {
+      reviewer_name,
+      reviewer_email,
+      title,
+      rating,
+      publish,
       description,
       genres,
       photo,
     };
 
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://game-vibe-server.vercel.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -50,7 +59,7 @@ const AddReviewForm = () => {
       });
   };
   return (
-    <div className="min-h-screen bg-[url('https://i.ibb.co.com/LXGJkJyQ/11.png')] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center px-4">
+    <div className="min-h-screen  flex flex-col items-center justify-center px-4">
       {/* Form Container */}
       <div className="bg-[#F4F3F0] p-10 rounded-lg shadow-lg max-w-4xl w-full">
         <h2 className="text-3xl font-semibold text-center mb-4 text-[#374151] font-rancho">
@@ -89,23 +98,23 @@ const AddReviewForm = () => {
                 className="input input-bordered w-full"
               />
               <label className="label mt-3">Genres</label>
-              {/* <select
+              <select
                 value={selectedOption}
                 onChange={(e) => setSelectedOption(e.target.value)}
                 className="border p-2 rounded"
               >
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-              </select> */}
-              <select name="genres" className="select select-bordered w-full">
+                <option value="option1">Action</option>
+                <option value="option2">RGP</option>
+                <option value="option3">Adventure</option>
+              </select>
+              {/* <select name="genres" className="select select-bordered w-full">
                 <option value="" disabled selected>
                   Select one
                 </option>
                 <option value="Action">Action</option>
                 <option value="RPG">RPG</option>
                 <option value="Adventure">Adventure</option>
-              </select>
+              </select> */}
             </div>
 
             {/* Right Column */}

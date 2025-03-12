@@ -5,10 +5,20 @@ import AuthContext from "../context/AuthContext";
 
 const ReviewDetails = () => {
   const { user } = useContext(AuthContext);
-
   const loadedData = useLoaderData();
-  const { _id, title, rating, description, genres, date, name, email, photo } =
-    loadedData;
+  console.log(loadedData);
+  const {
+    _id,
+    title,
+    rating,
+    description,
+    genres,
+    date,
+    reviewer_name,
+    reviewer_email,
+    photo,
+  } = loadedData;
+  console.log("reviewDetails", loadedData);
 
   const handleAddWatchList = () => {
     const watchListData = {
@@ -19,12 +29,12 @@ const ReviewDetails = () => {
       description,
       genres,
       date,
-      name,
-      email,
+      reviewer_name,
+      reviewer_email,
       photo,
     };
     console.log(watchListData);
-    fetch("http://localhost:5000/watchLists", {
+    fetch("https://game-vibe-server.vercel.app/watchLists", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -55,7 +65,7 @@ const ReviewDetails = () => {
           <div className="grid grid-cols-2 gap-2">
             <div>
               <div className="space-y-2">
-                <p>
+                <div>
                   <div className="rating mr-2">
                     <input
                       type="radio"
@@ -90,14 +100,14 @@ const ReviewDetails = () => {
                     />
                   </div>
                   {rating}
-                </p>
+                </div>
                 <p>Genres: {genres}</p>
                 <p>Publish: {date}</p>
               </div>
             </div>
             <div className="space-y-2">
-              <p>Review's name: {name}</p>
-              <p>Review's email: {email}</p>
+              <p>Review's name: {reviewer_name}</p>
+              <p>Review's email: {reviewer_email}</p>
             </div>
           </div>
 
